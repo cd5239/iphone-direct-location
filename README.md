@@ -4,7 +4,7 @@
 
 ## 下载与首次使用
 
-从 [Releases](https://github.com/cd5239/iphone-direct-location/releases) 下载 `iphone-direct-location-v2.4-win64.zip`，完整解压后再运行。需要 Windows 10/11 64 位、.NET Framework 4.x、Apple 设备驱动及服务、USB 数据线，以及已开启开发者模式并信任此电脑的 iPhone。连接组件已包含 Python，无需用户另装。
+从 [Releases](https://github.com/cd5239/iphone-direct-location/releases) 下载 `iphone-direct-location-v2.4.1-win64.zip`，完整解压后再运行。需要 Windows 10/11 64 位、.NET Framework 4.x、Apple 设备驱动及服务、USB 数据线，以及已开启开发者模式并信任此电脑的 iPhone。连接组件已包含 Python，无需用户另装。v2.4.1 仅补充开源许可证和许可说明，程序功能仍为 2.4。
 
 1. 解锁手机，用 USB 连接电脑，并在手机上确认“信任此电脑”。
 2. 打开 `iPhone直连定位.exe`，输入地点名称、经纬度及坐标来源，然后保存地点。
@@ -46,4 +46,4 @@ Copy-Item .\build-engine\dist\LocationEngine\* .\engine -Recurse
 
 ## 授权
 
-当前仓库暂未附加本项目的开源许可证。公开内容可供查看；复制、修改或再发布本项目源码前，请先联系仓库所有者取得许可。第三方组件分别遵循各自许可证。
+本项目自有源码以 [GNU GPL v3 或更高版本](LICENSE) 开源。下载包内的 `pymobiledevice3` 同样采用 GPL-3.0-or-later；其他第三方组件分别遵循其原许可证，文本保留在 `source/third-party-licenses/`。修改或再分发时需遵守适用的许可条件。版权归属和对应源码获取方式见 [COPYRIGHT](COPYRIGHT.md) 与 [SOURCE](SOURCE.md)。
