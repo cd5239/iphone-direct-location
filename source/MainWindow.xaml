@@ -1,0 +1,40 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="iPhone 直连定位" Width="520" MinWidth="440" SizeToContent="Height" WindowStartupLocation="CenterScreen" Background="#F4F7FC" FontFamily="Microsoft YaHei UI" FontSize="14" UseLayoutRounding="True" SnapsToDevicePixels="True">
+ <Window.Resources>
+  <Style TargetType="TextBox"><Setter Property="Padding" Value="10,8"/><Setter Property="VerticalContentAlignment" Value="Center"/><Setter Property="BorderBrush" Value="#CCD5E2"/></Style>
+  <Style TargetType="Button"><Setter Property="Padding" Value="14,10"/><Setter Property="Cursor" Value="Hand"/><Setter Property="Margin" Value="0,0,0,8"/></Style>
+  <Style TargetType="TextBlock"><Setter Property="TextWrapping" Value="Wrap"/></Style>
+ </Window.Resources>
+ <ScrollViewer Background="#F4F7FC" Foreground="#25344C" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+ <StackPanel Margin="26,24,26,20">
+  <TextBlock Text="iPhone 直连定位" FontSize="26" FontWeight="SemiBold" Foreground="#17263F"/>
+  <TextBlock Text="插上手机，一键使用常用地点" Margin="0,6,0,18" Foreground="#61718A"/>
+  <Border x:Name="DeviceCard" Padding="13" CornerRadius="8" Background="#E7EFFB" Margin="0,0,0,14"><StackPanel><TextBlock x:Name="DeviceHeading" Text="正在检测手机…" FontWeight="SemiBold" Foreground="#284B78"/><TextBlock x:Name="Device" Text="正在启动 USB 连接组件" Margin="0,5,0,0" FontSize="12" Foreground="#61718A"/></StackPanel></Border>
+  <Border x:Name="ResultCard" Padding="13" Background="#E7EFFB" CornerRadius="8" Margin="0,0,0,16"><StackPanel>
+   <TextBlock x:Name="StatusHeading" Text="正在启动连接组件…" FontWeight="SemiBold" FontSize="18" Foreground="#284B78"/>
+   <TextBlock x:Name="Status" Text="连接手机后会自动更新状态。" Margin="0,7,0,0" Foreground="#4B5870"/>
+   <ProgressBar x:Name="Progress" Height="5" IsIndeterminate="True" Visibility="Collapsed" Margin="0,10,0,0"/>
+   <TextBlock x:Name="Elapsed" Visibility="Collapsed" Margin="0,6,0,0" FontSize="12" Foreground="#61718A"/>
+  </StackPanel></Border>
+  <TextBlock Text="常用地点" Margin="0,0,0,6"/>
+  <DockPanel Margin="0,0,0,6"><Button x:Name="DeleteLocation" Content="删除" DockPanel.Dock="Right" Margin="8,0,0,0" Padding="12,6" Foreground="#B83232"/><ComboBox x:Name="Favorites" Padding="8"/></DockPanel>
+  <TextBlock x:Name="PlaceStatus" Text="选中地点后点击修改。编辑后请先保存，再切换地点。" FontSize="12" Foreground="#61718A" Margin="0,0,0,12"/>
+  <TextBlock Text="地点名称" Margin="0,0,0,6"/><TextBox x:Name="Place" Margin="0,0,0,12"/>
+  <Grid Margin="0,0,0,12"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="16"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+   <StackPanel><TextBlock Text="经度" Margin="0,0,0,6"/><TextBox x:Name="Longitude"/></StackPanel>
+   <StackPanel Grid.Column="2"><TextBlock Text="纬度" Margin="0,0,0,6"/><TextBox x:Name="Latitude"/></StackPanel>
+  </Grid>
+  <TextBlock Text="坐标来源" Margin="0,0,0,6"/>
+  <ComboBox x:Name="Source" SelectedIndex="0" Padding="8" Margin="0,0,0,16">
+   <ComboBoxItem Tag="BD09">百度地图（BD-09）</ComboBoxItem>
+   <ComboBoxItem Tag="GCJ02">高德 / 腾讯地图（GCJ-02）</ComboBoxItem>
+   <ComboBoxItem Tag="WGS84">GPS 原始经纬度（WGS84）</ComboBoxItem>
+  </ComboBox>
+  <Button x:Name="Apply" Content="修改定位" Background="#2563EB" Foreground="White" BorderThickness="0" FontSize="17" FontWeight="SemiBold" Padding="14"/>
+  <UniformGrid Columns="2"><Button x:Name="Save" Content="保存当前地点" Margin="0,0,6,8"/><Button x:Name="AddLocation" Content="另存为新地点" Margin="6,0,0,8"/></UniformGrid>
+  <Button x:Name="Restore" Content="恢复真实定位"/>
+  <Button x:Name="Refresh" Content="重新检测手机" Background="Transparent" BorderThickness="0" Foreground="#315B97" Padding="8,4"/>
+  <TextBlock x:Name="LastResult" Text="尚未执行定位修改" FontSize="12" Foreground="#61718A" Margin="0,8,0,0"/>
+  <TextBlock Text="定位运行时可关闭窗口，工具会留在右下角托盘。" FontSize="12" Foreground="#7A869A" Margin="0,12,0,0"/>
+ </StackPanel>
+ </ScrollViewer>
+</Window>

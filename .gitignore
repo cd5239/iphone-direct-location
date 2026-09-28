@@ -1,0 +1,13 @@
+*.exe
+*.pdb
+*.pyc
+__pycache__/
+.venv/
+build-engine/
+test-output*/
+engine/
+state/
+location.xml
+locations.xml
+locations.xml.*
+*.tmp
