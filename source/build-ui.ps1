@@ -1,8 +1,8 @@
-﻿$ErrorActionPreference='Stop'
+$ErrorActionPreference='Stop'
 $framework=Join-Path $env:WINDIR 'Microsoft.NET\Framework64\v4.0.30319'
 $outDir=Split-Path $PSScriptRoot
 $refs=@('System.dll','System.Core.dll','System.Drawing.dll','System.Windows.Forms.dll','System.Web.Extensions.dll','System.Xml.dll','System.Xml.Linq.dll','System.Xaml.dll',"$framework\WPF\WindowsBase.dll","$framework\WPF\PresentationCore.dll","$framework\WPF\PresentationFramework.dll")
-$argsList=@('/nologo','/target:winexe','/platform:x64','/optimize+',"/win32icon:$PSScriptRoot\app.ico","/win32manifest:$PSScriptRoot\app.manifest","/out:$outDir\iPhone直连定位.exe")
+$argsList=@('/nologo','/target:winexe','/platform:x64','/optimize+',"/win32icon:$PSScriptRoot\app.ico","/win32manifest:$PSScriptRoot\app.manifest","/out:$outDir\iPhone虚拟定位.exe")
 $argsList+=$refs|ForEach-Object{"/r:$_"}
 $argsList+="$PSScriptRoot\App.cs"
 $argsList+="$PSScriptRoot\Controller.cs"

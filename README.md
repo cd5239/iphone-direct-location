@@ -1,13 +1,13 @@
-# iPhone 直连定位
+# iPhone 虚拟定位
 
 一个 Windows 桌面工具，通过 USB 连接 iPhone 的开发者定位服务，手动设置或清除模拟位置。主界面可管理多个常用地点；“一键修改”入口使用当前选中的地点，并在通知区域保持运行。当前版本为 2.4。
 
 ## 下载与首次使用
 
-从 [Releases](https://github.com/cd5239/iphone-direct-location/releases) 下载 `iphone-direct-location-v2.4.1-win64.zip`，完整解压后再运行。需要 Windows 10/11 64 位、.NET Framework 4.x、Apple 设备驱动及服务、USB 数据线，以及已开启开发者模式并信任此电脑的 iPhone。连接组件已包含 Python，无需用户另装。v2.4.1 仅补充开源许可证和许可说明，程序功能仍为 2.4。
+从 [Releases](https://github.com/cd5239/iphone-virtual-location/releases) 下载 `iphone-virtual-location-v2.4.2-win64.zip`，完整解压后再运行。需要 Windows 10/11 64 位、.NET Framework 4.x、Apple 设备驱动及服务、USB 数据线，以及已开启开发者模式并信任此电脑的 iPhone。连接组件已包含 Python，无需用户另装。v2.4.2 将产品名称统一为 iPhone 虚拟定位；定位功能仍与 2.4 一致。
 
 1. 解锁手机，用 USB 连接电脑，并在手机上确认“信任此电脑”。
-2. 打开 `iPhone直连定位.exe`，输入地点名称、经纬度及坐标来源，然后保存地点。
+2. 打开 `iPhone虚拟定位.exe`，输入地点名称、经纬度及坐标来源，然后保存地点。
 3. 点击“修改定位”；在手机地图中核对落点。之后可用 `一键修改.exe` 重新应用选中的地点。
 4. 用主界面或托盘菜单发送“恢复真实定位”，再在手机地图核对实际位置。
 

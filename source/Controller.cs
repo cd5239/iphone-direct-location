@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
@@ -20,11 +20,11 @@ partial class Controller {
  Process engine;JavaScriptSerializer json=new JavaScriptSerializer();Forms.NotifyIcon tray;UiState state=new UiState();StatusToast toast=new StatusToast();bool exiting,autoApply;long nextId;DateTime lastProbe=DateTime.MinValue,launched,probeStarted;
  DispatcherTimer timer;EventWaitHandle applySignal,showSignal;RegisteredWaitHandle applyWait,showWait;
  public Controller(bool background){
-  autoApply=background;Window=App.Load();Window.Title="iPhone 直连定位 · 2.4";Window.Icon=System.Windows.Media.Imaging.BitmapFrame.Create(new Uri(Path.Combine(App.Root,"source","app.ico")));Window.MaxHeight=SystemParameters.WorkArea.Height-30;
+  autoApply=background;Window=App.Load();Window.Title="iPhone 虚拟定位 · 2.4.2";Window.Icon=System.Windows.Media.Imaging.BitmapFrame.Create(new Uri(Path.Combine(App.Root,"source","app.ico")));Window.MaxHeight=SystemParameters.WorkArea.Height-30;
   place=Get<TextBox>("Place");longitude=Get<TextBox>("Longitude");latitude=Get<TextBox>("Latitude");source=Get<ComboBox>("Source");status=Get<TextBlock>("Status");device=Get<TextBlock>("Device");
   deviceHeading=Get<TextBlock>("DeviceHeading");statusHeading=Get<TextBlock>("StatusHeading");lastResult=Get<TextBlock>("LastResult");elapsed=Get<TextBlock>("Elapsed");progress=Get<ProgressBar>("Progress");deviceCard=Get<Border>("DeviceCard");resultCard=Get<Border>("ResultCard");
   apply=Get<Button>("Apply");restore=Get<Button>("Restore");save=Get<Button>("Save");refresh=Get<Button>("Refresh");InitLocationControls();
-  tray=new Forms.NotifyIcon{Text="iPhone 直连定位 · 正在检测",Icon=new System.Drawing.Icon(Path.Combine(App.Root,"source","app.ico")),Visible=true};
+  tray=new Forms.NotifyIcon{Text="iPhone 虚拟定位 · 正在检测",Icon=new System.Drawing.Icon(Path.Combine(App.Root,"source","app.ico")),Visible=true};
   var menu=new Forms.ContextMenuStrip();menu.Items.Add("打开定位窗口",null,(s,e)=>Window.Dispatcher.BeginInvoke(new Action(Show)));
   menu.Items.Add("恢复真实定位",null,(s,e)=>Window.Dispatcher.BeginInvoke(new Action(()=>Send("clear"))));menu.Items.Add("退出并结束定位",null,(s,e)=>Window.Dispatcher.BeginInvoke(new Action(Exit)));tray.ContextMenuStrip=menu;tray.DoubleClick+=(s,e)=>Show();
   applySignal=new EventWaitHandle(false,EventResetMode.AutoReset,"Local\\iPhoneDirectLocation_Apply");showSignal=new EventWaitHandle(false,EventResetMode.AutoReset,"Local\\iPhoneDirectLocation_Show");
@@ -89,7 +89,7 @@ partial class Controller {
   apply.Content=state.Operation=="apply"?"正在修改…":state.Busy?"请等待当前操作":!state.Ready?"正在准备连接…":state.Connection!="unknown"&&!state.Usable?"等待手机就绪":"修改定位";
   apply.IsEnabled=state.CanApply;restore.IsEnabled=state.Ready&&!state.Busy&&(state.Active||state.Usable);refresh.IsEnabled=!state.Busy&&!state.ProbePending;
   save.IsEnabled=place.IsEnabled=longitude.IsEnabled=latitude.IsEnabled=source.IsEnabled=!state.Busy;RenderLocationControls();
-  tray.Text="iPhone 直连定位 · "+(state.Busy?"正在操作":state.Active?"定位运行中":state.Usable?"手机已连接":"等待手机");
+  tray.Text="iPhone 虚拟定位 · "+(state.Busy?"正在操作":state.Active?"定位运行中":state.Usable?"手机已连接":"等待手机");
  }
  void Tick(){
   if(exiting)return;

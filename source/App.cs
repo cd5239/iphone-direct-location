@@ -25,12 +25,12 @@ static class App {
             if(args.Length==2&&args[0]=="--test-state"){try{UiStateTests.Run();File.WriteAllText(args[1],"PASS: probe/click race, progress, success notification, stale results, USB reconnect, tunnel interruption, failure notification.");}catch(Exception ex){File.WriteAllText(args[1],"FAIL: "+ex);Environment.ExitCode=1;}return;}
             if(args.Length==2&&args[0]=="--render") {Render(args[1]);return;}
             bool fresh;using(var mutex=new Mutex(true,"Local\\iPhoneDirectLocation_v2",out fresh)) {
-                if(!fresh){try{using(var signal=EventWaitHandle.OpenExisting(args.Contains("--apply-background")?"Local\\iPhoneDirectLocation_Apply":"Local\\iPhoneDirectLocation_Show"))signal.Set();}catch{MessageBox.Show("工具正在启动，请稍后重试。","iPhone 直连定位");}return;}
+                if(!fresh){try{using(var signal=EventWaitHandle.OpenExisting(args.Contains("--apply-background")?"Local\\iPhoneDirectLocation_Apply":"Local\\iPhoneDirectLocation_Show"))signal.Set();}catch{MessageBox.Show("工具正在启动，请稍后重试。","iPhone 虚拟定位");}return;}
                 var application=new Application();application.ShutdownMode=ShutdownMode.OnExplicitShutdown;
                 bool background=args.Contains("--apply-background");var controller=new Controller(background);application.MainWindow=controller.Window;
                 if(background)controller.StartHidden();else controller.Window.Show();application.Run();
             }
-        }catch(Exception e){MessageBox.Show(e.Message,"iPhone 直连定位");}
+        }catch(Exception e){MessageBox.Show(e.Message,"iPhone 虚拟定位");}
     }
     public static Window Load(){using(var f=File.OpenRead(Path.Combine(Root,"source","MainWindow.xaml")))return (Window)XamlReader.Load(f);}
     static void Render(string directory){
